@@ -1,49 +1,23 @@
-# Modern Resume Builder
+# Resume Builder
 
-An open-source resume builder with real-time preview, ATS optimization, and sign-in capabilities.
+Build, customize, and download a professional resume. No sign-up, no account, nothing to install.
 
-## ✨ Features
+![Resume Builder](public/image.png)
 
-- **Interactive, form-based resume creation**
-- **Real-time side-by-side preview**
-- **9 customizable templates with color themes**
-- **ATS tools:**
-  - Resume scoring
-  - Keyword analysis
-  - Skills recommendations
-- **Sign-in to save and reuse data**
-- **PDF export**
-- **Full data privacy** (all processing happens locally)
+## What it does
 
-## 🚀 Get Started
+- Open the site and start editing right away — no sign-in, no setup, no multi-step forms to click through.
+- Edit your details in a form panel and see a live, real-time preview of your resume next to it.
+- Choose from 9 resume templates and switch between them anytime without losing your data.
+- Customize colors for whichever template you pick.
+- Download your finished resume as a PDF, ready to send to employers.
+- Your data is saved locally in your browser — nothing is uploaded or stored on a server.
+- **Resume Tailor**: upload an existing resume and paste a job description to get an ATS match score, missing-keyword suggestions, and formatting feedback.
 
-1. Try it live: [Modern Resume Builder](https://resume-builder-frontend-orpin.vercel.app)
-2. Fill in your details and download your resume!
-3. **Sign in** to save your progress and reuse data at any time.
+## Using it
 
-## 💡 Optimize for ATS
-
-- Match score insights
-- Keyword suggestions
-- Formatting checks
-- Tailored recommendations
-
-## 🎨 Customization Made Easy
-
-- Select from 9 templates
-- Adjust colors and layouts
-- Preview updates in real-time
-
-## 🤝 Contribute
-
-We welcome contributions! Fork the repo, make changes, and submit a Pull Request.
-
-## 🔒 Privacy First
-
-All processing happens locally—no data is stored on our servers.
-
-## Core Contributors
-
-<a href="https://github.com/dhanushramudri"><img src="https://avatars.githubusercontent.com/u/114290461" alt="dhanushramudri" height="75px" width="75px" /></a>
-<a href="https://github.com/sandeeptottadi"><img src="https://avatars.githubusercontent.com/u/76050316" alt="sandeeptottadi" height="75px" width="75px" /></a>
-<a href="https://github.com/NAVEEN171"><img src="https://avatars.githubusercontent.com/u/98443253" alt="NAVEEN171" height="75px" width="75px" /></a>
+1. Open the site — you land directly in the editor with a sample resume already filled in.
+2. Replace the sample content with your own details, section by section (basics, skills, experience, education, activities, volunteering, awards, certifications).
+3. Pick a template and color scheme from the top navigation.
+4. Click **Download as PDF** when you're happy with it.
+5. Come back anytime — your edits are remembered in your browser.

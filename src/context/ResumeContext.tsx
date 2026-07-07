@@ -1,9 +1,8 @@
 // src/context/ResumeContext.tsx
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useUser } from '@clerk/clerk-react';
+import React, { createContext, useContext, useState } from 'react';
 import type { ResumeData } from '../types/resume';
-import { useRouter } from 'next/router';
+import sampleResumeData from '@/helpers/constants/resume-data.json';
 
 interface FormErrors {
   [key: string]: {
@@ -111,8 +110,8 @@ const initialState: ResumeData = {
   work: [], // Each work item should have { id, name, position, startDate, endDate, isWorkingHere, summary, highlights, years, type }
   education: [], // Separate from basics.education, contains array of Education objects
   activities: {
-    involvements: [],
-    achievements: [],
+    involvements: '',
+    achievements: '',
   },
   volunteer: [], // Each volunteer item should have { id, organization, position, startDate, endDate, summary, highlights?, isVolunteeringNow }
   awards: [], // Each award should have { id, title, date, awarder, summary }
@@ -121,51 +120,26 @@ const initialState: ResumeData = {
 
 const ResumeContext = createContext<ResumeContextType | undefined>(undefined);
 
-export const ResumeProvider: React.FC<{ children: React.ReactNode; userId: string }> = ({
-  children,
-  userId,
-}) => {
-  const [resumeData, setResumeData] = useState<ResumeData>(initialState);
+const getInitialResumeData = (): ResumeData => {
+  if (typeof window !== 'undefined') {
+    try {
+      const stored = localStorage.getItem('userDetailsData');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed?.resumeData) return parsed.resumeData as ResumeData;
+      }
+    } catch (error) {
+      console.error('Error reading resume data from localStorage:', error);
+    }
+  }
+  return sampleResumeData as unknown as ResumeData;
+};
+
+export const ResumeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [resumeData, setResumeData] = useState<ResumeData>(getInitialResumeData);
   const [currentStep, setCurrentStep] = useState<StepType>('basics');
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetchResumeData = async () => {
-      if (!userId) return;
-
-      try {
-        const response = await fetch(
-          `https://resume-builder-backend-gamma.vercel.app/user-details/${userId}`,
-          {
-            method: 'GET', // Changed to GET since it's a get request
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-
-        if (!response.ok) {
-          return;
-          // throw new Error('Failed to fetch resume data');
-        }
-
-        const data = await response.json();
-        if (data) {
-          setResumeData(data.resumeData); // Note: The data structure includes resumeData field
-          router.push('/builder');
-        }
-      } catch (error) {
-        console.error('Error fetching resume data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchResumeData();
-  }, [userId]);
 
   const validateBasics = () => {
     const newErrors: FormErrors = { basics: {} };

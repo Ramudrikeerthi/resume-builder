@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import { AwardSection } from '../modern/components/Awards';
 import { CertificationSection } from '../modern/components/Certifications';
 import { useResume } from '@/context/ResumeContext';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 const ProgressBar = styled.div`
   width: ${(props: { level: number }) => props.level}%;
@@ -205,14 +206,18 @@ export default function ElegantTemplate() {
             <SectionValidator value={basics.summary}>
               <div className="mb-6">
                 <h2 className="text-lg font-semibold mb-3">Professional Summary</h2>
-                <p className="text-sm leading-relaxed text-gray-700">{basics.summary}</p>
+                <div className="text-sm leading-relaxed text-gray-700">
+                  <HTMLRenderer htmlString={basics.summary} />
+                </div>
               </div>
             </SectionValidator>
 
             <SectionValidator value={basics.objective}>
               <div>
                 <h2 className="text-lg font-semibold mb-3">Career Objective</h2>
-                <p className="text-sm leading-relaxed text-gray-700">{basics.objective}</p>
+                <div className="text-sm leading-relaxed text-gray-700">
+                  <HTMLRenderer htmlString={basics.objective} />
+                </div>
               </div>
             </SectionValidator>
           </div>

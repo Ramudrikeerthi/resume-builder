@@ -1,5 +1,6 @@
 // components/Volunteer.tsx
 import React from 'react';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 interface VolunteerItem {
   id: string;
@@ -29,7 +30,9 @@ const Volunteer: React.FC<VolunteerProps> = ({ volunteer }) => {
             </span>
           </div>
           <p className="text-sm font-medium">{item.position}</p>
-          <p className="text-sm">{item.summary}</p>
+          <div className="text-sm">
+            <HTMLRenderer htmlString={item.summary} />
+          </div>
           {item.highlights?.length > 0 && (
             <ul className="list-disc ml-4 text-sm">
               {item.highlights.map((highlight, index) => (

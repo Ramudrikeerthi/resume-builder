@@ -14,7 +14,7 @@ import { useResume } from '@/context/ResumeContext';
 const CreativeTemplate = () => {
   const { resumeData } = useResume();
 
-  const achievements = resumeData?.activities?.achievements || [];
+  const achievements = resumeData?.activities?.achievements || '';
   console.log('resume data is creative one ', resumeData);
 
   // Fallback values for basics

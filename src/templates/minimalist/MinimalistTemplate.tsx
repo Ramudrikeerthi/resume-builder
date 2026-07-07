@@ -1,6 +1,7 @@
 import React from 'react';
 import { useResume } from '@/context/ResumeContext';
 import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-react';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 const ProgressBar = ({ level }: { level: number }) => (
   <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
@@ -70,7 +71,9 @@ export default function MinimalistTemplate() {
       {basics.summary && (
         <section className="mb-4">
           <h2 className="text-base font-bold mb-1">Professional Summary</h2>
-          <p className="text-sm text-gray-700 leading-snug">{basics.summary}</p>
+          <div className="text-sm text-gray-700 leading-snug">
+            <HTMLRenderer htmlString={basics.summary} />
+          </div>
         </section>
       )}
 

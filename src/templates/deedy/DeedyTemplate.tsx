@@ -12,6 +12,7 @@ import { SkillsSection } from '../modern/components/Skills';
 import { Objective } from '../modern/components/Objective';
 import { useResume } from '@/context/ResumeContext';
 import { CertificationSection } from '../modern/components/Certifications';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 import Involvement from '../professional/components/Involvement';
 // import { Section } from '../professional/components/Section';
 import Color from 'color';
@@ -194,7 +195,9 @@ export default function DeedyTemplate() {
         <div className="w-[60%]">
           {basics?.summary && (
             <Section title="Professional Summary">
-              <p className="text-gray-700">{basics.summary}</p>
+              <div className="text-gray-700">
+                <HTMLRenderer htmlString={basics.summary} />
+              </div>
             </Section>
           )}
 
@@ -208,7 +211,9 @@ export default function DeedyTemplate() {
                     {formatDate(job.startDate)} -{' '}
                     {job.isWorkingHere ? 'Present' : formatDate(job.endDate)}
                   </div>
-                  <p className="mt-1 text-gray-700">{job.summary}</p>
+                  <div className="mt-1 text-gray-700">
+                    <HTMLRenderer htmlString={job.summary} />
+                  </div>
                   {job.highlights?.length > 0 && (
                     <ul className="list-disc list-inside mt-2">
                       {job.highlights.map((highlight, i) => (
@@ -230,7 +235,9 @@ export default function DeedyTemplate() {
                   <h3 className="font-semibold">{cert.title}</h3>
                   <div className="text-gray-600">{cert.authority}</div>
                   <div className="text-gray-500 text-xs">{formatDate(cert.date)}</div>
-                  <p className="mt-1 text-gray-700">{cert.summary}</p>
+                  <div className="mt-1 text-gray-700">
+                    <HTMLRenderer htmlString={cert.summary} />
+                  </div>
                 </div>
               ))}
             </Section>
@@ -241,7 +248,9 @@ export default function DeedyTemplate() {
         <div className="w-[40%]">
           {basics?.objective && (
             <Section title="Career Objective">
-              <p className="text-gray-700">{basics.objective}</p>
+              <div className="text-gray-700">
+                <HTMLRenderer htmlString={basics.objective} />
+              </div>
             </Section>
           )}
 
@@ -308,7 +317,9 @@ export default function DeedyTemplate() {
                     {formatDate(vol.startDate)} -{' '}
                     {vol.isVolunteeringNow ? 'Present' : formatDate(vol.endDate)}
                   </div>
-                  <p className="mt-1 text-gray-700">{vol.summary}</p>
+                  <div className="mt-1 text-gray-700">
+                    <HTMLRenderer htmlString={vol.summary} />
+                  </div>
                 </div>
               ))}
             </Section>

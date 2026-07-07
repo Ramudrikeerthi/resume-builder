@@ -8,7 +8,6 @@ import { PrintResume } from './components/PrintResume';
 import { TemplateSelect } from './components/TemplateSelect';
 import { ThemeSelect } from './components/ThemeSelect';
 import { NavBarActions, NavBarMenu, StyledButton } from './atoms';
-import { useAuth } from '@clerk/nextjs';
 import { AVAILABLE_TEMPLATES } from '@/helpers/constants';
 
 const TOTAL_TEMPLATES_AVAILABLE = Object.keys(AVAILABLE_TEMPLATES).length;
@@ -18,7 +17,6 @@ const NavBarLayout = () => {
   const [showTemplates, setShowTemplates] = useState(false);
   const [showColors, setShowColors] = useState(false);
   const router = useRouter();
-  const { signOut } = useAuth();
 
   const closeMenu = () => {
     setMenuAnchor(null);
@@ -62,16 +60,6 @@ const NavBarLayout = () => {
             variant="text"
             onClick={() => {
               closeMenu();
-              router.push('/update');
-            }}
-            className="text-teal-950 hover:bg-teal-700/50 bg-white rounded-lg transition-all duration-200 hover:scale-105"
-          >
-            Update Details
-          </StyledButton>
-          <StyledButton
-            variant="text"
-            onClick={() => {
-              closeMenu();
               router.push('/resumereview');
             }}
             className="text-teal-950 hover:bg-teal-700/50 bg-white rounded-lg transition-all duration-200 hover:scale-105"
@@ -82,16 +70,6 @@ const NavBarLayout = () => {
             onClick={closeMenu}
             className="hover:scale-105 transition-transform duration-200"
           />
-          <StyledButton
-            variant="text"
-            onClick={() => {
-              closeMenu();
-              signOut();
-            }}
-            className="text-red-600 hover:bg-red-600/90 hover:text-white bg-white rounded-lg transition-all duration-200 hover:scale-105"
-          >
-            Logout
-          </StyledButton>
         </NavBarActions>
       </div>
 
@@ -169,15 +147,6 @@ const NavBarLayout = () => {
             <MenuItem
               onClick={() => {
                 closeMenu();
-                router.push('/update');
-              }}
-              className="hover:bg-teal-50 transition-colors duration-200 mb-2"
-            >
-              Update Details
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                closeMenu();
                 router.push('/resumereview');
               }}
               className="hover:bg-teal-50 transition-colors duration-200 mb-2"
@@ -185,15 +154,6 @@ const NavBarLayout = () => {
               Resume Tailor
             </MenuItem>
             <PrintResume isMenuButton onClick={closeMenu} />
-            <MenuItem
-              onClick={() => {
-                closeMenu();
-                signOut();
-              }}
-              className="bg-red-600 text-white transition-colors duration-200 rounded-lg mt-2 hover:bg-red-700"
-            >
-              Logout
-            </MenuItem>
           </div>
         )}
       </Menu>

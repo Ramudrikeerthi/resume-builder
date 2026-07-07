@@ -9,10 +9,9 @@ const ActivitiesForm = () => {
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    const items = value.trim() ? value.split('\n') : [];
     updateResumeData('activities', {
       ...activities,
-      [name]: items,
+      [name]: value,
     });
   };
 
@@ -27,7 +26,7 @@ const ActivitiesForm = () => {
         <label className="block text-sm font-medium mb-1">Involvements*</label>
         <textarea
           name="involvements"
-          value={activities.involvements?.join('\n') || ''}
+          value={activities.involvements || ''}
           onChange={handleTextChange}
           className="w-full p-2 border rounded h-32"
           placeholder="Enter each involvement on a new line..."
@@ -39,7 +38,7 @@ const ActivitiesForm = () => {
         <label className="block text-sm font-medium mb-1">Achievements*</label>
         <textarea
           name="achievements"
-          value={activities.achievements?.join('\n') || ''}
+          value={activities.achievements || ''}
           onChange={handleTextChange}
           className="w-full p-2 border rounded h-32"
           placeholder="Enter each achievement on a new line..."

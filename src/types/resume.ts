@@ -89,8 +89,8 @@ export interface Work {
 }
 
 export interface Activities {
-  involvements: string[];
-  achievements: string[];
+  involvements: string;
+  achievements: string;
 }
 
 export interface Volunteer {

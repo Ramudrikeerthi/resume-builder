@@ -1,6 +1,7 @@
 import React from 'react';
 import { useResume } from '@/context/ResumeContext';
 import { Mail, Phone, MapPin, Globe, Linkedin, Github } from 'lucide-react';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 export default function TwoColumnTemplate() {
   const { resumeData } = useResume();
@@ -56,7 +57,9 @@ export default function TwoColumnTemplate() {
               <h3 className="text-lg font-bold mb-3 text-gray-900 border-b border-gray-200 pb-1">
                 Professional Summary
               </h3>
-              <p className="text-sm leading-relaxed text-gray-700">{basics.summary}</p>
+              <div className="text-sm leading-relaxed text-gray-700">
+                <HTMLRenderer htmlString={basics.summary} />
+              </div>
             </section>
           )}
 
@@ -74,7 +77,9 @@ export default function TwoColumnTemplate() {
                     </span>
                   </div>
                   <h5 className="text-sm text-gray-700 mb-2">{job.name}</h5>
-                  <p className="text-sm leading-relaxed text-gray-600">{job.summary}</p>
+                  <div className="text-sm leading-relaxed text-gray-600">
+                    <HTMLRenderer htmlString={job.summary} />
+                  </div>
                 </div>
               ))}
             </section>
@@ -92,7 +97,9 @@ export default function TwoColumnTemplate() {
                     <span className="text-sm text-gray-600">{cert.date}</span>
                   </div>
                   <div className="text-sm text-gray-700 mb-1">{cert.authority}</div>
-                  <p className="text-sm leading-relaxed text-gray-600">{cert.summary}</p>
+                  <div className="text-sm leading-relaxed text-gray-600">
+                    <HTMLRenderer htmlString={cert.summary} />
+                  </div>
                 </div>
               ))}
             </section>

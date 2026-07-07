@@ -57,8 +57,8 @@ export default function ProfessionalTemplate() {
     practices: [],
     tools: [],
   };
-  const involvements = resumeData?.activities?.involvements || [];
-  const achievements = resumeData?.activities?.achievements || [];
+  const involvements = resumeData?.activities?.involvements || '';
+  const achievements = resumeData?.activities?.achievements || '';
   const fullName = `${basics?.firstName || ''} ${basics?.lastName || ''}`;
 
   return (

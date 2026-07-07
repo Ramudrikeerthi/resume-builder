@@ -1,5 +1,6 @@
 // components/Certifications.tsx
 import React from 'react';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 interface CertificationItem {
   id: string;
@@ -23,7 +24,9 @@ const Certifications: React.FC<CertificationsProps> = ({ certifications }) => {
             <span className="text-sm">{cert.date}</span>
           </div>
           <p className="text-sm font-medium">Issued by {cert.authority}</p>
-          <p className="text-sm">{cert.summary}</p>
+          <div className="text-sm">
+            <HTMLRenderer htmlString={cert.summary} />
+          </div>
         </div>
       ))}
     </div>

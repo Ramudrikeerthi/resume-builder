@@ -1,6 +1,7 @@
 import React from 'react';
 import { useResume } from '@/context/ResumeContext';
 import { Mail, Phone, Globe, MapPin } from 'lucide-react';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 const GeometricTemplate = () => {
   const { resumeData } = useResume();
@@ -47,7 +48,9 @@ const GeometricTemplate = () => {
           <h3 className="text-lg font-bold text-blue-500 border-b-2 border-t-2 border-blue-500 p-2 mb-2">
             SUMMARY
           </h3>
-          <p className="text-gray-700 leading-relaxed">{basics.summary}</p>
+          <div className="text-gray-700 leading-relaxed">
+            <HTMLRenderer htmlString={basics.summary} />
+          </div>
         </section>
       )}
 
@@ -88,7 +91,9 @@ const GeometricTemplate = () => {
                 </span>
               </div>
               <h5 className="text-blue-600 font-medium mb-1">{job.position}</h5>
-              <p className="text-gray-700">{job.summary}</p>
+              <div className="text-gray-700">
+                <HTMLRenderer htmlString={job.summary} />
+              </div>
             </div>
           ))}
         </section>

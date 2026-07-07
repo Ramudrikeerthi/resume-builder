@@ -5,6 +5,7 @@ import { SectionValidator } from '@/helpers/common/components/ValidSectionRender
 import { Section } from '../professional/components/Section';
 import AboutMe from '../professional/components/AboutMe';
 import { ProfileImage } from '@/helpers/common/components/ProfileImage';
+import { HTMLRenderer } from '@/helpers/common/components/HTMLRenderer';
 
 export default function BlueResumeTemplate() {
   const { resumeData } = useResume();
@@ -109,7 +110,9 @@ export default function BlueResumeTemplate() {
               <h3 className="text-lg font-bold mb-4  border-b-4 text-[#163753]  border-black pb-2">
                 PROFILE
               </h3>
-              <p className="text-sm leading-relaxed text-gray-700">{basics.summary}</p>
+              <div className="text-sm leading-relaxed text-gray-700">
+                <HTMLRenderer htmlString={basics.summary} />
+              </div>
             </section>
           )}
           {/* <section className="mb-8">
@@ -152,7 +155,9 @@ export default function BlueResumeTemplate() {
                 </div>
                 <h5 className="text-sm font-medium text-gray-700 mb-2">{job.position}</h5>
                 {job.summary && (
-                  <p className="text-sm leading-relaxed text-gray-600">{job.summary}</p>
+                  <div className="text-sm leading-relaxed text-gray-600">
+                    <HTMLRenderer htmlString={job.summary} />
+                  </div>
                 )}
               </div>
             ))}
@@ -177,7 +182,9 @@ export default function BlueResumeTemplate() {
                     })}
                   </div>
                   {certification.summary && (
-                    <p className="text-sm leading-relaxed text-gray-600">{certification.summary}</p>
+                    <div className="text-sm leading-relaxed text-gray-600">
+                      <HTMLRenderer htmlString={certification.summary} />
+                    </div>
                   )}
                 </div>
               ))}
